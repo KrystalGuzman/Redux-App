@@ -11,7 +11,7 @@ const YearCard = (props) =>{
     console.log('props!!!', props)
     return(
         <div class='content'>
-        <h2>Random Date Fact</h2>
+        <h2>Random Year Fact</h2>
         <Button onClick={props.getYear} variant="contained" color="secondary">Get Year!</Button><br/>
         <Container maxWidth="sm">
         {!props.year && !props.isLoading && (
