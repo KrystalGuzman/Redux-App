@@ -1,21 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getTrivia} from '../actions/';
+import {getJoke} from '../actions';
 import Loader from 'react-loader-spinner';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 
-const TriviaCard = (props) =>{
+const JokeCard = (props) =>{
     // 
     console.log('props!!!', props)
     return(
-        <div class='content'>
-        <h2>Random Trivia Fact</h2>
-        <Button onClick={props.getTrivia} variant="contained" color="secondary">Get Trivia!</Button><br/>
+        <div className='content'>
+        <h2>Random Joke</h2>
+        <Button onClick={props.getJoke} variant="contained" color="secondary">Get Joke!</Button><br/>
         <Container maxWidth="sm">
-        {!props.trivia && !props.isLoading && (
-          <h2>{props.trivia}</h2>
+        {!props.joke && !props.isLoading && (
+          <h2>{props.joke}{props.punchline}</h2>
+          
         )}
         {props.isLoading && (
           <Loader
@@ -26,14 +27,15 @@ const TriviaCard = (props) =>{
             timeout={3000} //3 secs
           />
         )}
-        {props.trivia && !props.isLoading && <h2>{props.trivia}</h2>}
+        {props.joke && !props.isLoading && <h2>{props.joke}<br/><br/>{props.punchline}</h2>}
         </Container>
       </div>
     )
 }
 const mapStateToProps = (state) =>{
     return{isLoading: state.isLoading,
-    trivia: state.trivia,
+    joke: state.joke,
+    punchline: state.punchline,
     error: state.error}
 }
-export default connect(mapStateToProps, {getTrivia})(TriviaCard);
+export default connect(mapStateToProps, {getJoke})(JokeCard);

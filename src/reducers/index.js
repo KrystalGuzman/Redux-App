@@ -1,4 +1,4 @@
-import {LOADING, DATES, YEARS, TRIVIA, NUMBER, ERROR} from '../actions/index';
+import {LOADING, JOKE, INSULT, QUOTE, ADVICE, AUTHOR, PUNCHLINE, ERROR} from '../actions/index';
 
 export const initialState={
     date: null,
@@ -15,30 +15,42 @@ export const Reducer = (state = initialState, action) =>{
                 isLoading: true,
                 error: ''
             }        
-        case DATES:
+        case INSULT:
             return{
                 ...state,
                 isLoading:false,
-                date:action.payload
+                insult:action.payload
             }
-        case YEARS:
+        case ADVICE:
             return{
                 ...state,
                 isLoading:false,
-                year:action.payload
+                advice:action.payload
             }
-        case TRIVIA:
+        case JOKE:
             return{
                 ...state,
                 isLoading:false,
-                trivia:action.payload
+                joke:action.payload
             }
-        case NUMBER:
+        case PUNCHLINE:
             return{
                 ...state,
                 isLoading:false,
-                number:action.payload
-            }         
+                punchline:action.payload
+                }
+        case QUOTE:
+            return{
+                ...state,
+                isLoading:false,
+                quote:action.payload
+            }
+        case AUTHOR:
+            return{
+                ...state,
+                isLoading:false,
+                author:action.payload
+            }          
         case ERROR:
             return{
                 ...state,

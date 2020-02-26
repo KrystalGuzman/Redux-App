@@ -9,9 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
   fullList: {
     width: 'auto',
   },
@@ -20,7 +17,7 @@ const useStyles = makeStyles({
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    left: false
+    top: false
   });
 
   const toggleDrawer = (side, open) => event => {
@@ -31,9 +28,9 @@ export default function TemporaryDrawer() {
     setState({ ...state, [side]: open });
   };
 
-  const sideList = side => (
+  const fullList = side => (
     <div
-      className={classes.list}
+      className={classes.fullList}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
@@ -45,17 +42,17 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-      <ListItem button component={Link} to="/Date">
-        <ListItemText primary="Date" />
+      <ListItem button component={Link} to="/Insult">
+        <ListItemText primary="Insult" />
       </ListItem>
-      <ListItem button component={Link} to="/Year">
-        <ListItemText primary="Year" />
+      <ListItem button component={Link} to="/Advice">
+        <ListItemText primary="Advice" />
       </ListItem>
-      <ListItem button component={Link} to="/Trivia">
-        <ListItemText primary="Trivia" />
+      <ListItem button component={Link} to="/Joke">
+        <ListItemText primary="Joke" />
       </ListItem>
-      <ListItem button component={Link} to="/Number">
-        <ListItemText primary="Number" />
+      <ListItem button component={Link} to="/Quote">
+        <ListItemText primary="Quote" />
       </ListItem>
       </List>
 
@@ -66,9 +63,9 @@ export default function TemporaryDrawer() {
   return (
     <div>
         <br></br>
-      <Button onClick={toggleDrawer('left', true)}  variant="contained" color="secondary">Menu</Button>
-      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-        {sideList('left')}
+      <Button onClick={toggleDrawer('top', true)}  variant="contained" color="secondary">Menu</Button>
+      <Drawer anchor="top" open={state.top} onClose={toggleDrawer('top', false)}>
+        {fullList('top')}
       </Drawer>
     </div>
   );

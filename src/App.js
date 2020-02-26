@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import DateCard from './components/DateCard';
-import YearCard from './components/YearCard';
-import TriviaCard from './components/TriviaCard';
-import NumberCard from './components/NumberCard';
+import InsultCard from './components/InsultCard';
+import AdviceCard from './components/AdviceCard';
+import JokeCard from './components/JokeCard';
+import QuoteCard from './components/QuoteCard';
 import Home from './components/Home'
 import Drawer from './components/Drawer'
 import {Route} from "react-router-dom";
@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <Drawer />
         <Route exact path="/" render={()=> <Home />} />
-        <Route exact path="/Date" render={props => <DateCard {...props} />} />
-        <Route exact path="/Year" render={props => <YearCard {...props} />} />
-        <Route exact path="/Trivia" render={props => <TriviaCard {...props} />} />
-        <Route exact path="/Number" render={props => <NumberCard {...props} />} />
+        <Route exact path="/Insult" render={props => <InsultCard />} />
+        <Route exact path="/Advice" render={props => <AdviceCard />} />
+        <Route exact path="/Joke" render={props => <JokeCard />} />
+        <Route exact path="/Quote" render={props => <QuoteCard />} />
         
     </div>
   );

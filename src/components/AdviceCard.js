@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getNumber} from '../actions/';
+import {getAdvice} from '../actions/';
 import Loader from 'react-loader-spinner';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 
-const NumberCard = (props) =>{
+const AdviceCard = (props) =>{
     // 
     console.log('props!!!', props)
     return(
-        <div class='content'>
-        <h2>Random Number Fact</h2>
-        <Button onClick={props.getNumber} variant="contained" color="secondary">Get Number!</Button><br/>
+        <div className='content'>
+        <h2>Random Advice</h2>
+        <Button onClick={props.getAdvice} variant="contained" color="secondary">Get advice!</Button><br/>
         <Container maxWidth="sm">
-        {!props.number && !props.isLoading && (
-          <h2>{props.number}</h2>
+        {!props.advice && !props.isLoading && (
+          <h2>{props.advice}</h2>
         )}
         {props.isLoading && (
           <Loader
@@ -26,14 +26,14 @@ const NumberCard = (props) =>{
             timeout={3000} //3 secs
           />
         )}
-        {props.number && !props.isLoading && <h2>{props.number}</h2>}
+        {props.advice && !props.isLoading && <h2>{props.advice}</h2>}
         </Container>
       </div>
     )
 }
 const mapStateToProps = (state) =>{
     return{isLoading: state.isLoading,
-    number: state.number,
+        advice: state.advice,
     error: state.error}
 }
-export default connect(mapStateToProps, {getNumber})(NumberCard);
+export default connect(mapStateToProps, {getAdvice})(AdviceCard);

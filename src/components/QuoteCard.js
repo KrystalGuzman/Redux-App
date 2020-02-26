@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getYear} from '../actions/';
+import {getQuote} from '../actions';
 import Loader from 'react-loader-spinner';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 
 
-const YearCard = (props) =>{
+const QuoteCard = (props) =>{
     // 
     console.log('props!!!', props)
     return(
-        <div class='content'>
-        <h2>Random Year Fact</h2>
-        <Button onClick={props.getYear} variant="contained" color="secondary">Get Year!</Button><br/>
+        <div className='content'>
+        <h2>Random Quote</h2>
+        <Button onClick={props.getQuote} variant="contained" color="secondary">Get Quote!</Button><br/>
         <Container maxWidth="sm">
-        {!props.year && !props.isLoading && (
-          <h2>{props.year}</h2>
+        {!props.quote && !props.isLoading && (
+          <h2>{props.quote}<br/><br/>{props.author}</h2>
         )}
         {props.isLoading && (
           <Loader
@@ -26,14 +26,15 @@ const YearCard = (props) =>{
             timeout={3000} //3 secs
           />
         )}
-        {props.year && !props.isLoading && <h2>{props.year}</h2>}
+        {props.quote && !props.isLoading && <h2>{props.quote}<br/><br/>{props.author}</h2>}
         </Container>
       </div>
     )
 }
 const mapStateToProps = (state) =>{
     return{isLoading: state.isLoading,
-        year: state.year,
+    quote: state.quote,
+    author: state.author,
     error: state.error}
 }
-export default connect(mapStateToProps, {getYear})(YearCard);
+export default connect(mapStateToProps, {getQuote})(QuoteCard);
