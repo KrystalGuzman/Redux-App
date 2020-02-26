@@ -17,7 +17,6 @@ function App() {
         <Route exact path="/Advice" render={props => <AdviceCard />} />
         <Route exact path="/Joke" render={props => <JokeCard />} />
         <Route exact path="/Quote" render={props => <QuoteCard />} />
-        
     </div>
   );
 }
